@@ -8,6 +8,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import static jakarta.persistence.FetchType.*;
 import static jakarta.persistence.FetchType.LAZY;
 
 @Entity
@@ -20,7 +21,7 @@ public class Order {
     private Long id;
 
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "member_id") //연관관계주인은 FK있는 쪽으로 주는 것이 좋음
     private Member member;
 
