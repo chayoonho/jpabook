@@ -18,7 +18,7 @@ public class Order {
     private Long id;
 
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id") //연관관계주인은 FK있는 쪽으로 주는 것이 좋음
     private Member member;
 
