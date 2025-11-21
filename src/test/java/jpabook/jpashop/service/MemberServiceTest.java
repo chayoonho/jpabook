@@ -14,7 +14,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@RunWith(SpringRunner.class)
 @SpringBootTest
 @Transactional //테스트는 반복해야하 때문에 기본적으로 Rollback됨
 class MemberServiceTest {
@@ -36,7 +35,6 @@ class MemberServiceTest {
         Assert.assertEquals(member, memberRepository.findOne(saveId));
     }
 
-    @Test
     public void 중복_회원_예외() throws Exception {
         //given
         Member member1 = new Member();
@@ -47,13 +45,10 @@ class MemberServiceTest {
 
         //when
         memberService.join(member1);
-        try {
-            memberService.join(member2); //예외발생!
-        } catch (IllegalStateException e) {
-            return;
-        }
 
         //then
-        fail("예외가 발생해야 한다.");
+        //IllegalStateException 예외가 발생하지 않으면 테스트 실패
+        assertThrows(IllegalStateException.class, () ->
+                memberService.join(member2));
     }
 }
