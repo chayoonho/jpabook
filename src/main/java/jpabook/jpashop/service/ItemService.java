@@ -13,7 +13,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ItemService {
 
-    // 상품service는 상품repo를 단순히 위임만 하는 class 
+    // 상품 서비스(Service) 계층의 주요 역할은 리포지토리에 데이터 접근 작업 위임
     // 경우에 따라 contoller -> repository로 바로 호출해야할지 고민해 볼 필요 있음
 
     private final ItemRepository itemRepository;
