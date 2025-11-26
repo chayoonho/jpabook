@@ -56,10 +56,10 @@ public class OrderService {
     @Transactional
     public void orderCancel(Long orderId){
         
-        // 주문 엔티티 조회
+        // 주문 엔티티 조회 -> 이 시점에 스냅샷
         Order order = orderRepository.findOne(orderId);
         
-        // 주문 취소
+        // 주문 취소 -> dirty checking 으로 인한 update
         order.cancel();
     }
 
