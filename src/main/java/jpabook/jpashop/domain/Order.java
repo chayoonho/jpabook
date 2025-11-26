@@ -33,7 +33,7 @@ public class Order {
     private Delivery delivery;
     
     //java 8에서는 hibernate mappping 해줌
-    private LocalDateTime orderData;
+    private LocalDateTime orderDate;
 
     @Enumerated(EnumType.STRING)
     private OrderStatus status; // 주문상태 (ORDER, CANCEL)
@@ -63,7 +63,7 @@ public class Order {
             order.addOrderItem(orderItem);
         }
         order.setStatus(OrderStatus.ORDER);
-        order.setOrderData(LocalDateTime.now());
+        order.setOrderDate(LocalDateTime.now());
         return order;
     }
 
